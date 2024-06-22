@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  font: 400 17px / 150% Raleway, sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-text-link);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 17px;
+}
+
+ul,
+ol {
+  padding-inline-start: 2em;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 600;
+}
