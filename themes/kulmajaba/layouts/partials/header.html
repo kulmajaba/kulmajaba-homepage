@@ -1,2 +1,17 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+{{ $url := printf "%s" .RelPermalink }}
+
+<header class="Header">
+  <a href="/" class="Header-titleContainer">
+    <h1 class="Header-title">{{ .Site.Title }}</h1>
+  </a>
+  <ul class="Header-nav u-noBullets">
+    {{ range .Site.Sections }}
+    <li>
+      {{ $class := cond (eq $url .RelPermalink) " is-active" "" }}
+      <a class="Header-navLink{{ $class }}" href="{{ .RelPermalink }}"
+        >{{- .Title -}}</a
+      >
+    </li>
+    {{ end }}
+  </ul>
+</header>

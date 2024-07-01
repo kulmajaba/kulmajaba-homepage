@@ -1,0 +1,58 @@
+/** @define Header */
+
+.Header {
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--spacing-l) var(--spacing-xl) 0;
+  gap: var(--spacing-l);
+}
+
+.Header-titleContainer {
+  flex-direction: column;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.Header-title {
+  margin: 0;
+}
+
+.Header-subtitle {
+  margin: 0;
+}
+
+.Header-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.Header-nav li ~ li::before {
+  border-left: 1px solid var(--color-text-secondary);
+  margin: var(--spacing-s);
+  content: "";
+}
+
+.Header-navLink {
+  border-bottom: 1px solid transparent;
+  color: var(--color-text-secondary);
+  font: 300 20px "IBM Plex Serif", serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .Header-navLink:hover {
+    border-bottom: 1px solid var(--color-text-secondary);
+    transition: 0.3s;
+  }
+}
+
+.Header-navLink.is-active {
+  border-bottom: 1px solid var(--color-text);
+  color: var(--color-text);
+}

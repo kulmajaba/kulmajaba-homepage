@@ -1,0 +1,68 @@
+/** @define Figure */
+
+.Figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.Figure-imagecontainer {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - var(--height-caption-header));
+  align-items: center;
+  justify-content: center;
+}
+
+.Figure-img {
+  /* 
+  With CSS Values and Units Level 4, something like the following formula could be used to offset the image
+  bottom: clamp(0, calc(50% + ((100vw / (100vh - var(--height-caption-header) * 2)) - (var(--image-width) / var(--image-height))) * 50%), var(--height-caption-header));
+
+  Explanation:
+  (100vw / (100vh - var(--height-caption-header) * 2) calculates the aspect ratio of the viewport with the title bar subtracted from top and bottom
+  (var(--image-width) / var(--image-height)) calculates the aspect ratio of the image
+  The difference between the two is the offset needed to allow the image to occupy the maximum height and preferably center vertically
+  The result is then clamped between 0 and the height of the title bar, to at max offset the image will be at the top of the viewport
+  */
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - var(--height-caption-header));
+  aspect-ratio: var(--image-width) / var(--image-height);
+  object-fit: contain;
+}
+
+.Figure-caption {
+  display: flex;
+  max-width: 1200px;
+  box-sizing: content-box;
+  flex-direction: column;
+  padding: 0 var(--spacing-l);
+  gap: var(--spacing-s);
+}
+
+.Figure-captionHeader {
+  display: flex;
+  min-height: var(--height-caption-header);
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--spacing-s);
+  gap: var(--spacing-s) var(--spacing-l);
+}
+
+.Figure-aside {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+}
+
+/* stylelint-disable-next-line plugin/selector-bem-pattern */
+.Figure-aside * ~ *::before {
+  border-left: 1px solid var(--color-text-secondary);
+  margin: var(--spacing-s);
+  content: "";
+}

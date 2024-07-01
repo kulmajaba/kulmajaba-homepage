@@ -1,0 +1,33 @@
+{{ define "main" }}
+<figure class="Figure">
+  <div class="Figure-imagecontainer">
+    {{ $watermark := resources.Get "watermark.png" }}
+
+    {{ $baseFileName := .File.BaseFileName }}
+    {{ $imageFileName := print $baseFileName ".jpg" }}
+    {{ with .CurrentSection.Resources.Get $imageFileName }}
+      {{ $image := .Fit "3840x2160" }}
+      {{ $image = images.Filter (images.Overlay $watermark (sub $image.Width $watermark.Width 32) (sub $image.Height $watermark.Height 32)) $image  }}
+      <img class="Figure-img" src="{{ $image.RelPermalink }}" alt="{{ $image.Title }}" style="--image-width: {{ $image.Width }}; --image-height: {{ $image.Height }};">
+    {{ else }}
+      {{ errorf "Resource not found: %s" $imageFileName }}
+    {{ end }}
+  </div>
+
+  <figcaption class="Figure-caption">
+    <div class="Figure-captionHeader">
+      <h1>{{ .Title }}</h1>
+
+      <aside class="Figure-aside">
+        <p>{{ .Params.location }}</p>
+        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+        {{ $dateHuman := .Date | time.Format "2006" }}
+        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+        <p>{{ .Params.medium }}</p>
+      </aside>
+    </div>
+
+    {{ .Content }}
+  </figcaption>
+</figure>
+{{ end }}
