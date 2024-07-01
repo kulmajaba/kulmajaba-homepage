@@ -4,6 +4,7 @@
   --color-text-secondary: rgb(28 28 28 / 0.8);
   --color-text-link: #0b4654;
   --color-bg: #f0f0f0;
+  --color-bg-transparent: rgb(240 240 240 / 0.75);
   --color-bg-card: #ffffff;
 
   @media (prefers-color-scheme: dark) {
@@ -11,6 +12,7 @@
     --color-text-secondary: rgb(246 246 243 / 0.8);
     --color-text-link: #87e1fa;
     --color-bg: #1c1c1c;
+    --color-bg-transparent: rgb(28 28 28 / 0.749);
     --color-bg-card: #242424;
   }
 
@@ -19,6 +21,7 @@
   --spacing-m: 24px;
   --spacing-l: 32px;
   --spacing-xl: 64px;
+  --spacing-xxl: 128px;
 
   /* Sizes */
   --size-h1: 28px;

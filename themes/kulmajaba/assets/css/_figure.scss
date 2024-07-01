@@ -1,16 +1,16 @@
 /** @define Figure */
 
 .Figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  --Figure-img-max-height: calc(100vh - var(--height-caption-header));
+
   margin: 0;
 }
 
 .Figure-imagecontainer {
+  position: fixed;
   display: flex;
   width: 100%;
-  height: calc(100vh - var(--height-caption-header));
+  height: var(--Figure-img-max-height);
   align-items: center;
   justify-content: center;
 }
@@ -28,17 +28,37 @@
   */
   width: 100%;
   height: auto;
-  max-height: calc(100vh - var(--height-caption-header));
+  max-height: var(--Figure-img-max-height);
   aspect-ratio: var(--image-width) / var(--image-height);
   object-fit: contain;
 }
 
+.Figure-captioncontainer {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--Figure-img-max-height);
+  overflow-y: scroll;
+}
+
+.Figure-captioncontent {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--color-bg);
+  background: var(--color-bg-transparent);
+}
+
 .Figure-caption {
   display: flex;
+  width: 100%;
+
+  /* The max width could also be tied to the images max width with better calculations */
   max-width: 1200px;
-  box-sizing: content-box;
   flex-direction: column;
-  padding: 0 var(--spacing-l);
+  padding: 0 var(--spacing-l) var(--spacing-xxl);
   gap: var(--spacing-s);
 }
 
@@ -48,7 +68,7 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: var(--spacing-s);
+  padding: var(--spacing-s) 0;
   gap: var(--spacing-s) var(--spacing-l);
 }
 

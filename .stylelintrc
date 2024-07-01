@@ -3,6 +3,7 @@
   "plugins": ["stylelint-selector-bem-pattern"],
   "rules": {
     "custom-property-empty-line-before": null,
+    "custom-property-pattern": null,
     "alpha-value-notation": "number",
     "color-hex-length": "long",
     "selector-class-pattern": null,

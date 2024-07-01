@@ -14,20 +14,23 @@
     {{ end }}
   </div>
 
-  <figcaption class="Figure-caption">
-    <div class="Figure-captionHeader">
-      <h1>{{ .Title }}</h1>
+  <div class="Figure-captioncontainer">
+    <div class="Figure-captioncontent">
+      <figcaption class="Figure-caption">
+        <div class="Figure-captionHeader">
+          <h1>{{ .Title }}</h1>
 
-      <aside class="Figure-aside">
-        <p>{{ .Params.location }}</p>
-        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-        {{ $dateHuman := .Date | time.Format "2006" }}
-        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-        <p>{{ .Params.medium }}</p>
-      </aside>
+          <aside class="Figure-aside">
+            <p>{{ .Params.location }}</p>
+            {{ $dateHuman := .Date | time.Format "2006" }}
+            <time datetime="{{ $dateHuman }}">{{ $dateHuman }}</time>
+            <p>{{ .Params.medium }}</p>
+          </aside>
+        </div>
+
+        {{ .Content }}
+      </figcaption>
     </div>
-
-    {{ .Content }}
-  </figcaption>
+  </div>
 </figure>
 {{ end }}
